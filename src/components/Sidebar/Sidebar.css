@@ -15,10 +15,9 @@
 .sidebar__top{
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 18px;
     align-items: center;
     border-bottom: 1px solid #513769;
-
 }
 
 .sidebar__channelsHeader{

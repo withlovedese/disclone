@@ -53,7 +53,7 @@ function Sidebar() {
       </div>
 
       <div className="sidebar__profile">
-        <Avatar src='https://media.discordapp.net/attachments/914510715107311658/1014894085418537030/IMG_1529.jpg?width=1080&height=486' />
+        <Avatar src='https://media.discordapp.net/attachments/914510715107311658/1014896158642028655/IMG_1523.jpg?width=912&height=513' />
         <div className="sidebar__profileInfo">
           <h3>withlovedese</h3>
           <p>#My ID</p>

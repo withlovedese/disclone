@@ -3,5 +3,44 @@
     background-color: #8161A1;
     height: 100vh;
     color: white;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat__messages{
+    flex: 1;
+}
+
+.chat__input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #E3DCEA;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 20px;
+    border-top: 1px solid #AB95C0;
+    background-color: #5C3F78;
+}
+
+.chat__input > form > input {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    outline-width: 0;
+    border: none;
+    color: white;
+    font-size: large;
+}
+
+.chat__input form {
+    flex: 1;
+}
+
+.chat__inputButton{
+    display: none;
+}
+
+.chat__inputIcons .MuiSvgIcon-root{
+    padding: 5px;
 }
