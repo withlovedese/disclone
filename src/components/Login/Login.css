@@ -1,0 +1,29 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #734F96;
+}
+
+.login Button{
+    padding: 10px 70px 10px 70px;
+    background-color: #8161A1;
+    color: #E3DCEA;
+    border: 2px solid #9D84B6;
+    border-radius: 10px;
+    
+}
+
+.login Button:hover{
+    color: #8161A1;
+    background-color: #E3DCEA;
+    border: 2px solid #8161A1;
+
+}
+
+.login__logo{
+    margin-bottom: 5rem;
+}
