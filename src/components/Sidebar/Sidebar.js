@@ -7,6 +7,9 @@ import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CallIcon from '@mui/icons-material/Call';
 import { Avatar } from '@mui/material'
+import MicIcon from '@mui/icons-material/Mic';
+import SettingsIcon from '@mui/icons-material/Settings';
+import HeadsetIcon from '@mui/icons-material/Headset';
 
 function Sidebar() {
   return (
@@ -50,7 +53,18 @@ function Sidebar() {
       </div>
 
       <div className="sidebar__profile">
-        <Avatar />
+        <Avatar src='https://media.discordapp.net/attachments/914510715107311658/1014894085418537030/IMG_1529.jpg?width=1080&height=486' />
+        <div className="sidebar__profileInfo">
+          <h3>withlovedese</h3>
+          <p>#My ID</p>
+        </div>
+
+        <div className="sidebar__profileIcons">
+          <MicIcon />
+          <SettingsIcon />
+          <HeadsetIcon />
+
+        </div>
       </div>
 
       
