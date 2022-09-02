@@ -5,7 +5,7 @@
     justify-content: center;
     height: 100vh;
     width: 100%;
-    background-color: #734F96;
+    background-color: #BF94E4;
 }
 
 .login Button{
@@ -25,5 +25,10 @@
 }
 
 .login__logo{
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+}
+
+.login__logo img{
+    border-radius: 100px;
+    border: #5C3F78 solid 2px;
 }

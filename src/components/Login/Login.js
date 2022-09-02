@@ -15,7 +15,7 @@ function Login() {
     <div className='login'>
 
         <div className="login__logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Discord_white_D.svg/91px-Discord_white_D.svg.png?20180117191712" alt="Disclone logo" />
+            <img src="./favicon.ico" alt="Disclone logo" />
         </div>
 
         <Button onClick={signIn}>Sign In</Button>
