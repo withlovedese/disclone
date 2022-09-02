@@ -5,6 +5,10 @@
     padding: 20px;
 }
 
+.message:hover{
+    background-color: #734F96;
+}
+
 .message__info{
     margin-left: 20px;
 }

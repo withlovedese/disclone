@@ -15,7 +15,7 @@ import { selectUser } from '../Reducers/userSlice';
 import db, { auth } from '../../firebase';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection, addDoc } from "firebase/firestore";
 
 function Sidebar() {
   const user = useSelector(selectUser);
@@ -23,22 +23,23 @@ function Sidebar() {
   const [channels, setChannels] = useState([]);
   const channelRef = collection(db, 'channels');
 
-  const getChannels = () => {
+  const handleAddChannel = () => {
+    const channelName = prompt('Enter a new channel name')
+    if (channelName){
+      addDoc(channelRef, {
+        channelName: channelName,
+      })
+    }
+  }
+
+  useEffect(() => {
     onSnapshot(channelRef, (channel) => {
       setChannels(channel.docs.map((item) => ({
         id: item.id,
         channelName: item.data()
       })))
     })
-  }
-
-  const handleAddChannel = () => {
-    const channelName = prompt('Enter a new channel name')
-  }
-
-  useEffect(() => {
-    getChannels();
-  }, [])
+  }, [channelRef])
 
   return (
     <div className="sidebar">
@@ -58,8 +59,8 @@ function Sidebar() {
         </div>
 
         <div className="sidebar__channelsList">
-          {channels.map((channel) => {
-            <SidebarChannel channel={channel} />
+          {channels.map(({ id, channelName }) => {
+            return (<SidebarChannel channelName={channelName.channelName} key={id} id={id}/>)
           })}
         </div>
       </div>
