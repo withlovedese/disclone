@@ -12,11 +12,34 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../Reducers/userSlice';
-import { auth } from '../../firebase';
+import db, { auth } from '../../firebase';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { onSnapshot, collection } from "firebase/firestore";
 
 function Sidebar() {
   const user = useSelector(selectUser);
-  //const dispatch = useDispatch();
+  //channels state
+  const [channels, setChannels] = useState([]);
+  const channelRef = collection(db, 'channels');
+
+  const getChannels = () => {
+    onSnapshot(channelRef, (channel) => {
+      setChannels(channel.docs.map((item) => ({
+        id: item.id,
+        channelName: item.data()
+      })))
+    })
+  }
+
+  const handleAddChannel = () => {
+    const channelName = prompt('Enter a new channel name')
+  }
+
+  useEffect(() => {
+    getChannels();
+  }, [])
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -31,15 +54,13 @@ function Sidebar() {
             <h4>Text channel</h4>
           </div>
 
-          <AddIcon className="sidebar__addChannel"></AddIcon>
+          <AddIcon className="sidebar__addChannel" onClick={handleAddChannel}></AddIcon>
         </div>
 
         <div className="sidebar__channelsList">
-          <SidebarChannel></SidebarChannel>
-          <SidebarChannel></SidebarChannel>
-          <SidebarChannel></SidebarChannel>
-          <SidebarChannel></SidebarChannel>
-          <SidebarChannel />
+          {channels.map((channel) => {
+            <SidebarChannel channel={channel} />
+          })}
         </div>
       </div>
 
