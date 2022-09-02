@@ -14,21 +14,22 @@ function App() {
   const user = useSelector(selectUser)
 
   useEffect(() => { //listens for change in user and reloads accordingly
-    auth.onAuthStateChanged((authUser) => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser){
         //user log in
-        dispatch(login({
-          uid: authUser.uid,
-          photo: authUser.photoURL,
-          email: authUser.email,
-          displayName: authUser.displayName
+        dispatch(
+          login({
+            uid: authUser.uid,
+            photo: authUser.photoURL,
+            email: authUser.email,
+            displayName: authUser.displayName
         }))
       } else {
         //user log out
         dispatch(logout())
       }
     })
-  
+    return unsubscribe;
   }, [dispatch])
   
   return (

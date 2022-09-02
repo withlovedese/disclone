@@ -53,6 +53,10 @@
     
 }
 
+.sidebar__profileIcon{
+    cursor: pointer;
+}
+
 .sidebar__voiceIcon{
     color: #4fb185;
 }

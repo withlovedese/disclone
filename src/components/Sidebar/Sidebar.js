@@ -16,6 +16,7 @@ import { auth } from '../../firebase';
 
 function Sidebar() {
   const user = useSelector(selectUser);
+  //const dispatch = useDispatch();
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -57,7 +58,10 @@ function Sidebar() {
       </div>
 
       <div className="sidebar__profile">
-        <Avatar onClick={() => auth.signOut()} src={user.photo} />
+        <div className="sidebar__profileIcon">
+          <Avatar onClick={() => auth.signOut()} src={user.photo} />
+        </div>
+        
         <div className="sidebar__profileInfo">
           <h3>{user.displayName}</h3>
           <p>#{user.uid.substring(0, 5)}</p>
