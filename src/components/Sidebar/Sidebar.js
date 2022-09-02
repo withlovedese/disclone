@@ -44,7 +44,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <h3>Twisted Wonderland</h3>
+        <h3>A.M.E CHAT!</h3>
         <ExpandMoreIcon></ExpandMoreIcon>
       </div>
 

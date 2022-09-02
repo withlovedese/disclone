@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ChatHeader from '../ChatHeader/ChatHeader'
 import './Chat.css'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -20,6 +20,15 @@ function Chat() {
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState([])
 
+  const messagesEndRef = useRef(null)
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages]);
+  
+
   useEffect(() => {
 
     if (channelId){
@@ -34,6 +43,7 @@ function Chat() {
       })))
       })
     }
+    scrollToBottom()
   }, [channelId])
 
   const sendMessage = (e) => {
@@ -57,14 +67,17 @@ function Chat() {
       <div className="chat__messages">
 
         {messages.map((message) => {
-          console.log(message)
            return(
-           <Message
-              key={message.id}
-              timestamp={message.messageInfo.timestamp}
-              message={message.messageInfo.message}
-              user={message.messageInfo.user}
-            />
+            <>
+              <Message
+                key={message.id}
+                timestamp={message.messageInfo.timestamp}
+                message={message.messageInfo.message}
+                user={message.messageInfo.user}
+              />
+              <div ref={messagesEndRef}></div>
+            </>
+           
            )
         })}
 

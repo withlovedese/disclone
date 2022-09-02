@@ -9,6 +9,7 @@
 
 .sidebar__channels{
     flex: 1;
+    overflow-y: scroll;
 
 }
 
@@ -33,6 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .sidebar__addChannel{
