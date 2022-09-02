@@ -10,8 +10,12 @@ import { Avatar } from '@mui/material'
 import MicIcon from '@mui/icons-material/Mic';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HeadsetIcon from '@mui/icons-material/Headset';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../Reducers/userSlice';
+import { auth } from '../../firebase';
 
 function Sidebar() {
+  const user = useSelector(selectUser);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -53,10 +57,10 @@ function Sidebar() {
       </div>
 
       <div className="sidebar__profile">
-        <Avatar src='https://media.discordapp.net/attachments/914510715107311658/1014896158642028655/IMG_1523.jpg?width=912&height=513' />
+        <Avatar onClick={() => auth.signOut()} src={user.photo} />
         <div className="sidebar__profileInfo">
-          <h3>withlovedese</h3>
-          <p>#My ID</p>
+          <h3>{user.displayName}</h3>
+          <p>#{user.uid.substring(0, 5)}</p>
         </div>
 
         <div className="sidebar__profileIcons">
