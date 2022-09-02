@@ -5,6 +5,7 @@
     color: white;
     display: flex;
     flex-direction: column;
+    border-left: 1px solid #513769;
 }
 
 .chat__messages{
