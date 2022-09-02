@@ -28,7 +28,10 @@ function Chat() {
       const q = query(messagesRef, orderBy("timestamp", "asc"))
 
       onSnapshot(q, (message) => {
-        setMessages(message.docs.map((item) => item.data()))
+        setMessages(message.docs.map((item) => ({
+        id: item.id,
+        messageInfo: item.data()
+      })))
       })
     }
   }, [channelId])
@@ -54,12 +57,13 @@ function Chat() {
       <div className="chat__messages">
 
         {messages.map((message) => {
-          //console.log(message)
+          console.log(message)
            return(
            <Message
-              timestamp={message.timestamp}
-              message={message.message}
-              user={message.user}
+              key={message.id}
+              timestamp={message.messageInfo.timestamp}
+              message={message.messageInfo.message}
+              user={message.messageInfo.user}
             />
            )
         })}
